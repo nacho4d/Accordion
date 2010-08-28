@@ -4,7 +4,7 @@
 //
 //  Created by Enriquez Gutierrez Guillermo Ignacio on 8/27/10.
 //  Copyright 2010 Nacho4D. All rights reserved.
-//
+//  Nacho4d nacho4d@mac.com
 
 #import <UIKit/UIKit.h>
 
