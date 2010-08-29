@@ -72,6 +72,22 @@
 - (NSString *) description{
 	return [NSString stringWithFormat:@"N4File: %@, %@", (self.isDirectory)?@" Dir.": @"", [self name]];
 }
+- (BOOL) isEmptyDirectory{
+	if (self.isDirectory){
+		
+		NSFileManager *fm = [NSFileManager defaultManager];
+		NSError *error = nil;
+		NSArray *subfiles = [fm contentsOfDirectoryAtPath:[self fullName] error:&error];
+		if (error) {
+			NSLog(@"Error %s: %@", _cmd, [error localizedDescription]);
+		}
+		if ([subfiles count])
+			return NO;
+		else
+			return YES;
+	}
+	return NO;
+}
 
 #pragma mark -
 

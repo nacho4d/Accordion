@@ -28,13 +28,13 @@
 }
 - (void) _mergeBranches{
 	
-	self.mergedRootBranch = [_unmergedBranches objectForKey:@"ROOT"];
+	self.mergedRootBranch = [_unmergedBranches objectForKey:rootDirectory];
 	NSInteger index = NSNotFound;
 	NSEnumerator *enumerator = [_unmergedBranches keyEnumerator];
 	id key;	
 	
 	while ((key = [enumerator nextObject])) {
-		if (key == @"ROOT") continue;
+		if (key == rootDirectory) continue;
 		NSMutableArray *unmergedBranch = [_unmergedBranches objectForKey:key];
 		index = [self.mergedRootBranch indexOfObject:key];
 		if (index != NSNotFound) 
@@ -83,7 +83,13 @@
 			[filesAtRootLevel addObject:aFile];
 			[aFile release];
 		}
-		[_unmergedBranches setObject:filesAtRootLevel forKey:@"ROOT"];
+		NSString *parentPath = [path stringByDeletingLastPathComponent];
+		rootDirectory = [[N4File alloc] initWithName:[path lastPathComponent] parentDirectory:parentPath];
+		//rootDirectory.isDirectory = YES;
+		[rootDirectory setLevel:-1];
+		[rootDirectory setExpanded:YES];
+		
+		[_unmergedBranches setObject:filesAtRootLevel forKey:rootDirectory];
 		[filesAtRootLevel release];
 		
 		_mergedRootBranch = [[NSMutableArray alloc] init];
@@ -94,6 +100,15 @@
  	}
 	return self;
 }
+- (void) dealloc{
+	[_sortDescriptors release];
+	[_mergedRootBranch release];
+	[_unmergedBranches release];
+	delegate = nil;
+	[super dealloc];
+}
+#pragma mark -
+
 - (void) sort{
 	[self _sortBranches];
 	[self _mergeBranches];
@@ -102,6 +117,7 @@
 - (void) reloadAllBranches{
 	//TODO:
 }
+#pragma mark -
 
 - (void) expandBranchAtIndex:(NSInteger)index{
 	N4File *directoryFile = [self.mergedRootBranch objectAtIndex:index];
@@ -176,10 +192,12 @@
 	
 }
 
+#pragma mark -
+
 
 
 - (void) moveFileFromIndex:(NSInteger)fromIndex toIndex:(NSInteger)toIndex{
-	//TODO: BRING SUPPORT FOR RE-ARRANGEMENT
+	 
 	//if file:
 	//get all indexes for root expanded branches.
 	//find a position between two indexes, and place 
@@ -190,13 +208,108 @@
 	//get all files:
 }
 
-- (void) dealloc{
-	[_sortDescriptors release];
-	[_mergedRootBranch release];
-	[_unmergedBranches release];
-	delegate = nil;
-	[super dealloc];
+- (void) deleteFileAtIndex:(NSInteger)index{
+	
 }
+- (void) _createFileInsideOfDirectory:(N4File *) containerDirectory withName:(NSString *)fileName{
+	
+	//create file on disk
+	NSFileManager *fm = [NSFileManager defaultManager];
+	[fm createFileAtPath:[[containerDirectory fullName] stringByAppendingFormat:fileName] 
+				contents:nil 
+			  attributes:nil];
+	
+	//create file in memory
+	N4File *file = [[N4File alloc] initWithName:fileName parentDirectory:[containerDirectory fullName]];
+	[file setLevel:containerDirectory.level + 1];
+	
+	if (!containerDirectory.expanded) {
+		NSInteger index = [self.mergedRootBranch indexOfObject:containerDirectory];
+		[self expandBranchAtIndex:index];
+	}
+	//insert it  into the corresponding branch
+	NSMutableArray *branch = [_unmergedBranches objectForKey:containerDirectory];
+	[branch addObject:file];
+	[file release];
+	
+	//sort it and notify the delegate
+//	[branch sortedArrayUsingDescriptors:_sortDescriptors];
+//	NSInteger index = [branch indexOfObject:file];
+//	NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
+//	[delegate fileTreeDatasourceManager:self didCreateRowAtIndexPath:indexPath];
+	
+}
+- (N4File *)directoryContainingFileAtIndex:(NSInteger)index offset:(NSInteger *)offset{
+	N4File *referenceFile = [self.mergedRootBranch objectAtIndex:index];
+	N4File *containerDirectory = nil;
+	for (int i = index; i > 0 ; --i) {
+		N4File *file = [self.mergedRootBranch objectAtIndex:i];
+		if (file.level < referenceFile.level) {
+			containerDirectory = file;
+			*offset = index - i;
+			break;
+		}
+	}
+	if (!containerDirectory) {
+		containerDirectory = rootDirectory;
+		*offset = index;
+	}
+	return containerDirectory;
+}
+- (void) createFileAtIndex:(NSInteger)index withName:(NSString *)fileName{
+		
+	//get directory to insert in, and expand it if needed
+	N4File *referenceFile = [self.mergedRootBranch objectAtIndex:index];
+	N4File *containerDirectory = nil;
+	NSInteger offsetToContainerDirectory;
+	if (referenceFile.isDirectory) {
+		containerDirectory = referenceFile;
+		offsetToContainerDirectory = 0;
+	}else {
+		for (int i = index; i > 0 ; --i) {
+			N4File *file = [self.mergedRootBranch objectAtIndex:i];
+			if (file.level < referenceFile.level) {
+				containerDirectory = file;
+				offsetToContainerDirectory = index - i;
+				break;
+			}
+		}
+		if (!containerDirectory) {
+			containerDirectory = rootDirectory;
+			offsetToContainerDirectory = index;
+		}
+		//containerDirectory = [self directoryContainingFileAtIndex:index offset:&offsetToContainerDirectory];
+	}
+	if (!containerDirectory.expanded) {
+		NSInteger expandIndex = [self.mergedRootBranch indexOfObject:containerDirectory];
+		[self expandBranchAtIndex:expandIndex];
+	}
+	
+	//create file on disk
+	NSFileManager *fm = [NSFileManager defaultManager];
+	[fm createFileAtPath:[[containerDirectory fullName] stringByAppendingFormat:fileName] 
+				contents:nil 
+			  attributes:nil];
+	
+	//create file in memory
+	N4File *newFile = [[N4File alloc] initWithName:fileName parentDirectory:[containerDirectory fullName]];
+	[newFile setLevel:containerDirectory.level + 1];
+
+	//insert it  into the corresponding branch and merged it manually
+	NSMutableArray *branch = [_unmergedBranches objectForKey:containerDirectory];
+	[branch insertObject:newFile atIndex:offsetToContainerDirectory];
+	[self.mergedRootBranch insertObject:newFile atIndex:index];
+	[newFile release];
+	
+}
+- (void) duplicateFileAtIndex:(NSInteger)index withName:(NSString *)fileName{
+	[self createFileAtIndex:index withName:fileName];
+	//duplicate data of object at index and rewrite it to disk. 
+}
+
+#pragma mark -
+
+
 
 
 

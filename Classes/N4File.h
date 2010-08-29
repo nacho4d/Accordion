@@ -39,6 +39,7 @@
 @property (nonatomic, readonly, assign) NSDate *modificationDate;
 
 @property (nonatomic, readonly) BOOL isDirectory; 
+@property (nonatomic, readonly) BOOL isEmptyDirectory;
 @property (nonatomic, readwrite, getter=isExpanded) BOOL expanded;
 @property (nonatomic) NSInteger level;
 

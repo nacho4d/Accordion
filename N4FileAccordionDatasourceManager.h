@@ -10,18 +10,20 @@
 
 @class N4FileAccordionDatasourceManager;
 @protocol N4FileAccordionDatasourceManagerDelegate <NSObject>
-@optional
+@required
 - (void) fileTreeDatasourceManager:(N4FileAccordionDatasourceManager *) manager didInsertRowsAtIndexPaths:(NSArray *)indexPaths;
 - (void) fileTreeDatasourceManager:(N4FileAccordionDatasourceManager *) manager didRemoveRowsAtIndexPaths:(NSArray *)indexPaths;
+//- (void) fileTreeDatasourceManager:(N4FileAccordionDatasourceManager *) manager didCreateRowAtIndexPath:(NSIndexPath *)indexPath;
 @end
 
+@class N4File;
 @interface N4FileAccordionDatasourceManager : NSObject {
 	
 	NSMutableArray *_sortDescriptors;
 	NSMutableArray *_mergedRootBranch;
 	NSMutableDictionary *_unmergedBranches;
 	id<N4FileAccordionDatasourceManagerDelegate> delegate;
-
+	N4File *rootDirectory;
 }
 
 @property (nonatomic, retain) NSMutableArray *sortDescriptors;
@@ -31,10 +33,15 @@
 + (NSMutableArray *) defaultSortDescriptors;
 - (id) initWithRootPath:(NSString *)path;
 - (void) sort;
+
 - (void) expandBranchAtIndex:(NSInteger)index;
 - (void) collapseBranchAtIndex:(NSInteger)index;
+
 - (void) moveFileFromIndex:(NSInteger)fromIndex toIndex:(NSInteger)toIndex;
 
+- (void) deleteFileAtIndex:(NSInteger)index;
+- (void) createFileAtIndex:(NSInteger)index withName:(NSString *)fileName;
+- (void) duplicateFileAtIndex:(NSInteger)index withName:(NSString *)fileName;
 
 
 
