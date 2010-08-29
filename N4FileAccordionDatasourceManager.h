@@ -13,7 +13,7 @@
 @required
 - (void) fileTreeDatasourceManager:(N4FileAccordionDatasourceManager *) manager didInsertRowsAtIndexPaths:(NSArray *)indexPaths;
 - (void) fileTreeDatasourceManager:(N4FileAccordionDatasourceManager *) manager didRemoveRowsAtIndexPaths:(NSArray *)indexPaths;
-//- (void) fileTreeDatasourceManager:(N4FileAccordionDatasourceManager *) manager didCreateRowAtIndexPath:(NSIndexPath *)indexPath;
+
 @end
 
 @class N4File;

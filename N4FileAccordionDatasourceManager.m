@@ -209,52 +209,35 @@
 }
 
 - (void) deleteFileAtIndex:(NSInteger)index{
+	N4File *file = [self.mergedRootBranch objectAtIndex:index];
 	
-}
-- (void) _createFileInsideOfDirectory:(N4File *) containerDirectory withName:(NSString *)fileName{
-	
-	//create file on disk
+	//delete file from disk:
 	NSFileManager *fm = [NSFileManager defaultManager];
-	[fm createFileAtPath:[[containerDirectory fullName] stringByAppendingFormat:fileName] 
-				contents:nil 
-			  attributes:nil];
+	NSError *error = nil;
+	[fm removeItemAtPath:[file fullName] error:&error];
+	if (error)	NSLog(@"Error %s :%@", _cmd, [error localizedDescription]);
 	
-	//create file in memory
-	N4File *file = [[N4File alloc] initWithName:fileName parentDirectory:[containerDirectory fullName]];
-	[file setLevel:containerDirectory.level + 1];
-	
-	if (!containerDirectory.expanded) {
-		NSInteger index = [self.mergedRootBranch indexOfObject:containerDirectory];
-		[self expandBranchAtIndex:index];
-	}
-	//insert it  into the corresponding branch
-	NSMutableArray *branch = [_unmergedBranches objectForKey:containerDirectory];
-	[branch addObject:file];
-	[file release];
-	
-	//sort it and notify the delegate
-//	[branch sortedArrayUsingDescriptors:_sortDescriptors];
-//	NSInteger index = [branch indexOfObject:file];
-//	NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
-//	[delegate fileTreeDatasourceManager:self didCreateRowAtIndexPath:indexPath];
-	
-}
-- (N4File *)directoryContainingFileAtIndex:(NSInteger)index offset:(NSInteger *)offset{
-	N4File *referenceFile = [self.mergedRootBranch objectAtIndex:index];
+	//delete file from memory
+	//delete it from corresponding unmerged branch - get its containerDirectory
 	N4File *containerDirectory = nil;
+	NSInteger offsetToContainerDirectory;
 	for (int i = index; i > 0 ; --i) {
-		N4File *file = [self.mergedRootBranch objectAtIndex:i];
-		if (file.level < referenceFile.level) {
-			containerDirectory = file;
-			*offset = index - i;
+		N4File *tempFile = [self.mergedRootBranch objectAtIndex:i];
+		if (tempFile.level < file.level) {
+			containerDirectory = tempFile;
+			offsetToContainerDirectory = index - i;
 			break;
 		}
 	}
 	if (!containerDirectory) {
 		containerDirectory = rootDirectory;
-		*offset = index;
+		offsetToContainerDirectory = index;
 	}
-	return containerDirectory;
+	NSMutableArray *branch = [_unmergedBranches objectForKey:containerDirectory];
+	[branch removeObjectAtIndex:offsetToContainerDirectory];
+	
+	//delete it from merged branch
+	[self.mergedRootBranch removeObjectAtIndex:index];
 }
 - (void) createFileAtIndex:(NSInteger)index withName:(NSString *)fileName{
 		

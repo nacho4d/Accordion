@@ -235,7 +235,7 @@
 						<key>_historyCapacity</key>
 						<integer>0</integer>
 						<key>bookmark</key>
-						<string>9A7EC284122A99FC00BB44E7</string>
+						<string>9A7EC29A122AA07F00BB44E7</string>
 						<key>history</key>
 						<array>
 							<string>9A7EC27B122A993E00BB44E7</string>
@@ -395,7 +395,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>9A7EC281122A99FC00BB44E7</string>
+										<string>9A7EC299122AA07F00BB44E7</string>
 										<key>history</key>
 										<array>
 											<string>9AE4B6FF1226FDFA0057C449</string>
@@ -609,7 +609,7 @@
 	<key>StatusbarIsVisible</key>
 	<true/>
 	<key>TimeStamp</key>
-	<real>304781820.45483899</real>
+	<real>304783487.98798501</real>
 	<key>ToolbarConfigUserDefaultsMinorVersion</key>
 	<string>2</string>
 	<key>ToolbarDisplayMode</key>
@@ -626,6 +626,8 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
+		<string>1C78EAAD065D492600B07095</string>
+		<string>1CD10A99069EF8BA00B06720</string>
 		<string>1C530D57069F1CE1000CFCEE</string>
 		<string>9AE4B6781226CFB60057C449</string>
 		<string>9A7EC282122A99FC00BB44E7</string>
@@ -833,13 +835,13 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1CD10A99069EF8BA00B06720</string>
-				<string>9AE7274F1229F9F900AE0952</string>
+				<string>9A7EC29B122AA07F00BB44E7</string>
 				<string>1C162984064C10D400B95A72</string>
-				<string>9AE727501229F9F900AE0952</string>
-				<string>9AE727511229F9F900AE0952</string>
-				<string>9AE727521229F9F900AE0952</string>
-				<string>9AE727531229F9F900AE0952</string>
-				<string>9AE727541229F9F900AE0952</string>
+				<string>9A7EC29C122AA07F00BB44E7</string>
+				<string>9A7EC29D122AA07F00BB44E7</string>
+				<string>9A7EC29E122AA07F00BB44E7</string>
+				<string>9A7EC29F122AA07F00BB44E7</string>
+				<string>9A7EC2A0122AA07F00BB44E7</string>
 			</array>
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.debugV3</string>
@@ -958,8 +960,6 @@
 					<key>Dock</key>
 					<array>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -995,7 +995,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C78EAAD065D492600B07095</string>
-				<string>9AE727551229F9F900AE0952</string>
+				<string>9A7EC2A1122AA07F00BB44E7</string>
 				<string>1C78EAAC065D492600B07095</string>
 			</array>
 			<key>ToolbarConfiguration</key>
@@ -1005,7 +1005,7 @@
 			<key>WindowToolGUID</key>
 			<string>1C78EAAD065D492600B07095</string>
 			<key>WindowToolIsVisible</key>
-			<true/>
+			<false/>
 		</dict>
 		<dict>
 			<key>Identifier</key>
