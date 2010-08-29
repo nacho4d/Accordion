@@ -18,6 +18,8 @@
 		28AD73600D9D9599002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD735F0D9D9599002E5188 /* MainWindow.xib */; };
 		9A019C581228AD5100F152EB /* N4AccordionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A019C571228AD5100F152EB /* N4AccordionViewCell.m */; };
 		9A6CBC4612292F2900B1A4DD /* TriangleSmall2.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A6CBC4512292F2900B1A4DD /* TriangleSmall2.png */; };
+		9A7EC308122AAB2400BB44E7 /* N4FileSorterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A7EC307122AAB2400BB44E7 /* N4FileSorterViewController.m */; };
+		9A7EC31D122AAEB000BB44E7 /* N4AccordionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A7EC31C122AAEB000BB44E7 /* N4AccordionViewController.xib */; };
 		9AB4304612289FD100507B0E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AB4304512289FD100507B0E /* QuartzCore.framework */; };
 		9AB430821228A3B600507B0E /* Document512.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AB430751228A3B600507B0E /* Document512.png */; };
 		9AB430831228A3B600507B0E /* Document56.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AB430761228A3B600507B0E /* Document56.png */; };
@@ -48,6 +50,9 @@
 		9A019C561228AD5100F152EB /* N4AccordionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = N4AccordionViewCell.h; sourceTree = "<group>"; };
 		9A019C571228AD5100F152EB /* N4AccordionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = N4AccordionViewCell.m; sourceTree = "<group>"; };
 		9A6CBC4512292F2900B1A4DD /* TriangleSmall2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TriangleSmall2.png; sourceTree = "<group>"; };
+		9A7EC306122AAB2400BB44E7 /* N4FileSorterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = N4FileSorterViewController.h; sourceTree = "<group>"; };
+		9A7EC307122AAB2400BB44E7 /* N4FileSorterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = N4FileSorterViewController.m; sourceTree = "<group>"; };
+		9A7EC31C122AAEB000BB44E7 /* N4AccordionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = N4AccordionViewController.xib; sourceTree = "<group>"; };
 		9AB4304512289FD100507B0E /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = /System/Library/Frameworks/QuartzCore.framework; sourceTree = "<absolute>"; };
 		9AB430751228A3B600507B0E /* Document512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Document512.png; sourceTree = "<group>"; };
 		9AB430761228A3B600507B0E /* Document56.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Document56.png; sourceTree = "<group>"; };
@@ -87,6 +92,8 @@
 				28042008108E984D000629CD /* N4AccordionViewController.m */,
 				9A019C561228AD5100F152EB /* N4AccordionViewCell.h */,
 				9A019C571228AD5100F152EB /* N4AccordionViewCell.m */,
+				9A7EC306122AAB2400BB44E7 /* N4FileSorterViewController.h */,
+				9A7EC307122AAB2400BB44E7 /* N4FileSorterViewController.m */,
 				1D3623240D0F684500981E51 /* AppDelegate.h */,
 				1D3623250D0F684500981E51 /* AppDelegate.m */,
 				28042009108E984D000629CD /* DetailViewController.h */,
@@ -129,6 +136,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				9A7EC31C122AAEB000BB44E7 /* N4AccordionViewController.xib */,
 				28AD735F0D9D9599002E5188 /* MainWindow.xib */,
 				2804203B108E9BAB000629CD /* DetailView.xib */,
 				8D1107310486CEB800E47090 /* Accordion-Info.plist */,
@@ -219,6 +227,7 @@
 				9AB430891228A73E00507B0E /* Triangle.png in Resources */,
 				9AC3A6AB122915AC00FCB092 /* TriangleSmall.png in Resources */,
 				9A6CBC4612292F2900B1A4DD /* TriangleSmall2.png in Resources */,
+				9A7EC31D122AAEB000BB44E7 /* N4AccordionViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -236,6 +245,7 @@
 				9AE4B6751226CF9B0057C449 /* N4FileAccordionDatasourceManager.m in Sources */,
 				9AE4B68B1226D01B0057C449 /* N4File.m in Sources */,
 				9A019C581228AD5100F152EB /* N4AccordionViewCell.m in Sources */,
+				9A7EC308122AAB2400BB44E7 /* N4FileSorterViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

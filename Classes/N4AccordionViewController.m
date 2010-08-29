@@ -18,6 +18,8 @@
 
 @synthesize detailViewController;
 @synthesize datasourceManager, sortDescriptors;
+@synthesize tableView;
+@synthesize navigationBar;
 
 - (NSString *)applicationDocumentsDirectory {
     return [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
@@ -70,7 +72,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 	self.tableView.rowHeight = 56;
-    self.clearsSelectionOnViewWillAppear = NO;
+    //self.clearsSelectionOnViewWillAppear = NO;
     self.contentSizeForViewInPopover = CGSizeMake(320.0, 600.0);
 	
 	[self createTestData];
@@ -86,11 +88,12 @@
     [super viewWillAppear:animated];
 }
 */
-/*
+
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+	NSLog(@"%@", NSStringFromCGRect(self.view.frame));
 }
-*/
+
 /*
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
@@ -135,10 +138,10 @@
 }
 
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (UITableViewCell *)tableView:(UITableView *)aTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     static NSString *CellIdentifier = @"MyCellIdentifier";
-	N4AccordionViewCell *cell = (N4AccordionViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+	N4AccordionViewCell *cell = (N4AccordionViewCell *)[aTableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
 		cell = [[[N4AccordionViewCell alloc] initWithReuseIdentifier:CellIdentifier] autorelease];
         cell.accessoryType = UITableViewCellAccessoryNone;
@@ -165,18 +168,18 @@
 }
 
 // Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+- (void)tableView:(UITableView *)aTableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
 		[datasourceManager deleteFileAtIndex:indexPath.row];
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:YES];
+        [aTableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:YES];
 		
     }   
     else if (editingStyle == UITableViewCellEditingStyleInsert) {
 		
 		[datasourceManager createFileAtIndex:indexPath.row withName:[NSString stringWithFormat:@"%@", [NSDate date]]];
-		[tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationMiddle];
+		[aTableView insertRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationMiddle];
         
     }   
 }
@@ -252,6 +255,53 @@
 	[datasourceManager release];
 	[sortDescriptors release];
     [super dealloc];
+}
+
+#pragma mark -
+#pragma mark UIPopoverController
+
+- (IBAction) showSortingMenu:(id)sender{
+	if (!sorterPopoverController.popoverVisible) {
+		
+		[self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
+		
+		N4FileSorterViewController *vc = [[N4FileSorterViewController alloc] initWithStyle:UITableViewStylePlain];
+		[vc setDescriptorsDatasource:sortDescriptors];
+		[vc setSorterDelegate:self];
+		
+		sorterPopoverController = [[UIPopoverController alloc] initWithContentViewController:vc];
+		[vc release];
+		
+		int w = 240, h = 44;
+		[sorterPopoverController setPopoverContentSize:CGSizeMake(w, h*5)];
+		[sorterPopoverController presentPopoverFromBarButtonItem:sender 
+										permittedArrowDirections:UIPopoverArrowDirectionAny
+														animated:YES];
+		[sorterPopoverController setDelegate:self];
+	}
+	
+}
+
+#pragma mark -
+#pragma mark UIPopoverControllerDelegate methods
+
+- (BOOL)popoverControllerShouldDismissPopover:(UIPopoverController *)popoverController{
+	return YES;
+}
+
+- (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController{
+	//[self _sortDataSource]; //unneccessary since is done by FileSorterViewControllerDelegate
+	//[self.tableView reloadData]; 
+	[sorterPopoverController release];
+	sorterPopoverController = nil;
+}
+#pragma mark -
+#pragma mark N4FileSorterViewControllerDelegate
+
+- (void) fileSorterViewController:(N4FileSorterViewController *)filerSorterViewController didUpdateDataSource:(NSMutableArray*)datasource{
+	//[self _sortDataSource];
+	[self.tableView reloadRowsAtIndexPaths:[self.tableView indexPathsForVisibleRows] withRowAnimation:UITableViewRowAnimationFade];
+	[self.tableView performSelector:@selector(reloadData) withObject:nil afterDelay:0.4];
 }
 
 
