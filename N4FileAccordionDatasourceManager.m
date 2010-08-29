@@ -210,7 +210,7 @@
 
 - (void) deleteFileAtIndex:(NSInteger)index{
 	N4File *file = [self.mergedRootBranch objectAtIndex:index];
-	
+		
 	//delete file from disk:
 	NSFileManager *fm = [NSFileManager defaultManager];
 	NSError *error = nil;
@@ -225,7 +225,7 @@
 		N4File *tempFile = [self.mergedRootBranch objectAtIndex:i];
 		if (tempFile.level < file.level) {
 			containerDirectory = tempFile;
-			offsetToContainerDirectory = index - i;
+			offsetToContainerDirectory = index - i - 1;
 			break;
 		}
 	}
@@ -233,11 +233,13 @@
 		containerDirectory = rootDirectory;
 		offsetToContainerDirectory = index;
 	}
+
 	NSMutableArray *branch = [_unmergedBranches objectForKey:containerDirectory];
 	[branch removeObjectAtIndex:offsetToContainerDirectory];
 	
-	//delete it from merged branch
-	[self.mergedRootBranch removeObjectAtIndex:index];
+	//delete it from merged branch if needed
+	if (branch != self.mergedRootBranch) 
+		[self.mergedRootBranch removeObjectAtIndex:index];
 }
 - (void) createFileAtIndex:(NSInteger)index withName:(NSString *)fileName{
 		

@@ -169,13 +169,15 @@
     
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
-		
+		[datasourceManager deleteFileAtIndex:indexPath.row];
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:YES];
 		
     }   
     else if (editingStyle == UITableViewCellEditingStyleInsert) {
+		
 		[datasourceManager createFileAtIndex:indexPath.row withName:[NSString stringWithFormat:@"%@", [NSDate date]]];
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+		[tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationMiddle];
+        
     }   
 }
 
