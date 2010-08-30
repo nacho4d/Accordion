@@ -20,6 +20,8 @@
 		9A6CBC4612292F2900B1A4DD /* TriangleSmall2.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A6CBC4512292F2900B1A4DD /* TriangleSmall2.png */; };
 		9A7EC308122AAB2400BB44E7 /* N4FileSorterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A7EC307122AAB2400BB44E7 /* N4FileSorterViewController.m */; };
 		9A7EC31D122AAEB000BB44E7 /* N4AccordionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A7EC31C122AAEB000BB44E7 /* N4AccordionViewController.xib */; };
+		9A7EC3FC122ABBEB00BB44E7 /* descending.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A7EC3FA122ABBEB00BB44E7 /* descending.png */; };
+		9A7EC3FD122ABBEB00BB44E7 /* ascending.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A7EC3FB122ABBEB00BB44E7 /* ascending.png */; };
 		9AB4304612289FD100507B0E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AB4304512289FD100507B0E /* QuartzCore.framework */; };
 		9AB430821228A3B600507B0E /* Document512.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AB430751228A3B600507B0E /* Document512.png */; };
 		9AB430831228A3B600507B0E /* Document56.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AB430761228A3B600507B0E /* Document56.png */; };
@@ -53,6 +55,8 @@
 		9A7EC306122AAB2400BB44E7 /* N4FileSorterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = N4FileSorterViewController.h; sourceTree = "<group>"; };
 		9A7EC307122AAB2400BB44E7 /* N4FileSorterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = N4FileSorterViewController.m; sourceTree = "<group>"; };
 		9A7EC31C122AAEB000BB44E7 /* N4AccordionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = N4AccordionViewController.xib; sourceTree = "<group>"; };
+		9A7EC3FA122ABBEB00BB44E7 /* descending.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = descending.png; sourceTree = "<group>"; };
+		9A7EC3FB122ABBEB00BB44E7 /* ascending.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ascending.png; sourceTree = "<group>"; };
 		9AB4304512289FD100507B0E /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = /System/Library/Frameworks/QuartzCore.framework; sourceTree = "<absolute>"; };
 		9AB430751228A3B600507B0E /* Document512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Document512.png; sourceTree = "<group>"; };
 		9AB430761228A3B600507B0E /* Document56.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Document56.png; sourceTree = "<group>"; };
@@ -118,7 +122,6 @@
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
-				9AB4304512289FD100507B0E /* QuartzCore.framework */,
 			);
 			name = CustomTemplate;
 			sourceTree = "<group>";
@@ -150,6 +153,7 @@
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
 				2892E40F0DC94CBA00A64D0F /* CoreGraphics.framework */,
+				9AB4304512289FD100507B0E /* QuartzCore.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -157,6 +161,8 @@
 		9AB4306B1228A3B500507B0E /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				9A7EC3FA122ABBEB00BB44E7 /* descending.png */,
+				9A7EC3FB122ABBEB00BB44E7 /* ascending.png */,
 				9AB430751228A3B600507B0E /* Document512.png */,
 				9AB430761228A3B600507B0E /* Document56.png */,
 				9AB430771228A3B600507B0E /* Folder512.png */,
@@ -228,6 +234,8 @@
 				9AC3A6AB122915AC00FCB092 /* TriangleSmall.png in Resources */,
 				9A6CBC4612292F2900B1A4DD /* TriangleSmall2.png in Resources */,
 				9A7EC31D122AAEB000BB44E7 /* N4AccordionViewController.xib in Resources */,
+				9A7EC3FC122ABBEB00BB44E7 /* descending.png in Resources */,
+				9A7EC3FD122ABBEB00BB44E7 /* ascending.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

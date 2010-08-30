@@ -298,10 +298,15 @@
 #pragma mark -
 #pragma mark N4FileSorterViewControllerDelegate
 
-- (void) fileSorterViewController:(N4FileSorterViewController *)filerSorterViewController didUpdateDataSource:(NSMutableArray*)datasource{
+- (void) fileSorterViewController:(N4FileSorterViewController *)filerSorterViewController 
+			  didUpdateDataSource:(NSMutableArray*)datasource{
 	//[self _sortDataSource];
+	NSLog(@"count before rearranging: %i", [datasourceManager.mergedRootBranch count]);
+	[datasourceManager sort];
+	NSLog(@"count before rearranging: %i", [datasourceManager.mergedRootBranch count]);
 	[self.tableView reloadRowsAtIndexPaths:[self.tableView indexPathsForVisibleRows] withRowAnimation:UITableViewRowAnimationFade];
 	[self.tableView performSelector:@selector(reloadData) withObject:nil afterDelay:0.4];
+	
 }
 
 

@@ -26,13 +26,21 @@
 		[branch sortUsingDescriptors:_sortDescriptors];
 	}
 }
+// mergeBranches should be recursive. 
+//Hence I should create a method: (It might need more parameters)
+// - (void _mergeBranch:(N4File *)key{
+// get branch correspoding key
+// for each file in the branch:
+// if the file is expanded
+//    [self _mergeBranch:file]; 
+//}
 - (void) _mergeBranches{
 	
-	self.mergedRootBranch = [_unmergedBranches objectForKey:rootDirectory];
+	[self.mergedRootBranch setArray:[_unmergedBranches objectForKey:rootDirectory]];
+
 	NSInteger index = NSNotFound;
 	NSEnumerator *enumerator = [_unmergedBranches keyEnumerator];
 	id key;	
-	
 	while ((key = [enumerator nextObject])) {
 		if (key == rootDirectory) continue;
 		NSMutableArray *unmergedBranch = [_unmergedBranches objectForKey:key];
@@ -41,10 +49,6 @@
 			[self.mergedRootBranch replaceObjectsInRange:NSMakeRange(index+1, 0) withObjectsFromArray:unmergedBranch];
 		
 	}
-}
-
-- (void) _sortBranchAtIndex:(NSIndexPath *)indexPath{
-	
 }
 
 + (NSMutableArray *) defaultSortDescriptors{
