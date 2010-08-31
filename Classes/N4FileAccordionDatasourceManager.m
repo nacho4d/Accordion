@@ -23,34 +23,29 @@
 
 - (void) _sortBranches{
 	for (NSMutableArray *branch in [_unmergedBranches allValues]){
-		[branch sortUsingDescriptors:_sortDescriptors];
+		[branch sortUsingDescriptors:self.sortDescriptors];
 	}
 }
-// mergeBranches should be recursive. 
-//Hence I should create a method: (It might need more parameters)
-// - (void _mergeBranch:(N4File *)key{
-// get branch correspoding key
-// for each file in the branch:
-// if the file is expanded
-//    [self _mergeBranch:file]; 
-//}
+
 - (void) _mergeBranches{
 	
 	[self.mergedRootBranch setArray:[_unmergedBranches objectForKey:rootDirectory]];
-
+	NSMutableArray *branchKeys = [[_unmergedBranches allKeys] mutableCopy];
+	NSSortDescriptor *sortDesc = [[NSSortDescriptor alloc] initWithKey:@"level" ascending:YES];
+	[branchKeys sortUsingDescriptors:[NSArray arrayWithObject:sortDesc]];
+	
 	NSInteger index = NSNotFound;
-	NSEnumerator *enumerator = [_unmergedBranches keyEnumerator];
-	id key;	
-	while ((key = [enumerator nextObject])) {
-		if (key == rootDirectory) continue;
-		NSMutableArray *unmergedBranch = [_unmergedBranches objectForKey:key];
-		index = [self.mergedRootBranch indexOfObject:key];
-		if (index != NSNotFound) 
-			[self.mergedRootBranch replaceObjectsInRange:NSMakeRange(index+1, 0) withObjectsFromArray:unmergedBranch];
-		
+	for (N4File *branchKey in branchKeys) {
+		if (branchKey == rootDirectory) continue;
+		NSMutableArray *unmergedBranch = [_unmergedBranches objectForKey:branchKey];
+		index = [self.mergedRootBranch indexOfObject:branchKey];
+		[self.mergedRootBranch replaceObjectsInRange:NSMakeRange(index+1, 0) withObjectsFromArray:unmergedBranch];
 	}
+	[sortDesc release];
+	[branchKeys release];
+	
 }
-
+   
 + (NSMutableArray *) defaultSortDescriptors{
 	
 	NSSortDescriptor * sortDescType = [[NSSortDescriptor alloc] initWithKey:@"type" ascending:YES]; // Folders come first
@@ -72,9 +67,11 @@
 	return descs;
 }
 
-- (id) initWithRootPath:(NSString *)path{
+- (id) initWithRootPath:(NSString *)path sortDescriptors:(NSMutableArray *)sortDescs{
 	
 	if (self = [super init]) {
+		
+		self.sortDescriptors = sortDescs;
 			
 		_unmergedBranches = [[NSMutableDictionary alloc] init];
 		NSFileManager *fileMgr = [NSFileManager defaultManager];
@@ -139,9 +136,9 @@
 			[newBranch addObject:aFile];
 			[aFile release];
 		}
-		
+
 		//sort and add it unmerged branches
-		[newBranch sortUsingDescriptors:_sortDescriptors];
+		[newBranch sortUsingDescriptors:self.sortDescriptors];
 		[_unmergedBranches setObject:newBranch forKey:directoryFile];
 		[newBranch release];
 		
@@ -157,10 +154,6 @@
 			}
 			[delegate fileTreeDatasourceManager:self didInsertRowsAtIndexPaths:paths];
 		}
-		
-		
-
-		
 	}
 }
 
@@ -233,13 +226,17 @@
 			break;
 		}
 	}
+	
 	if (!containerDirectory) {
 		containerDirectory = rootDirectory;
 		offsetToContainerDirectory = index;
 	}
 
+	//I should refactor this, many ifs should not be needed.
 	NSMutableArray *branch = [_unmergedBranches objectForKey:containerDirectory];
-	[branch removeObjectAtIndex:offsetToContainerDirectory];
+	if (containerDirectory != rootDirectory) {
+		[branch removeObjectAtIndex:offsetToContainerDirectory];
+	}
 	
 	//delete it from merged branch if needed
 	if (branch != self.mergedRootBranch) 

@@ -70,7 +70,7 @@
 	return	([[self type] isEqualToString:NSFileTypeDirectory]);
 }
 - (NSString *) description{
-	return [NSString stringWithFormat:@"N4File: %@, %@", (self.isDirectory)?@" Dir.": @"", [self name]];
+	return [NSString stringWithFormat:@"N4File:%@ directory:%@",  [self name], (self.isDirectory)?@"YES": @"NO"];
 }
 - (BOOL) isEmptyDirectory{
 	if (self.isDirectory){

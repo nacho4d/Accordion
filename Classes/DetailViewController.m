@@ -8,6 +8,7 @@
 
 #import "DetailViewController.h"
 #import "N4AccordionViewController.h"
+#import "N4FileView.h"
 
 
 @interface DetailViewController ()
@@ -21,6 +22,7 @@
 
 @synthesize toolbar, popoverController, detailItem, detailDescriptionLabel;
 @synthesize backgroundImageVIew;
+@synthesize fileViews;
 
 #pragma mark -
 #pragma mark Managing the detail item
@@ -86,12 +88,10 @@
 #pragma mark -
 #pragma mark View lifecycle
 
-/*
- // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
     [super viewDidLoad];
+	fileViews = [[NSMutableDictionary alloc] init];
 }
- */
 
 /*
 - (void)viewWillAppear:(BOOL)animated {
@@ -142,7 +142,27 @@
 	
 	[backgroundImageVIew release];
 	
+	[fileViews release];
+	
     [super dealloc];
 }
+
+- (void) addFile:(N4File *)file{
+	
+	if (![fileViews objectForKey:file]) {
+		N4FileView *fileView = [[N4FileView alloc] initWithFrame:CGRectMake(0, 44, 500, 500)];
+		[fileView setFile:file];
+		[[self view] addSubview:fileView];
+		[fileViews setObject:fileView forKey:file];
+		[fileView release];
+	}
+}
+- (void) removeFile:(N4File *)file{
+	
+	[[fileViews objectForKey:file] removeFromSuperview];
+	[fileViews removeObjectForKey:file];
+	
+}
+
 
 @end

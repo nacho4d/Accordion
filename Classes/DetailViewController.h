@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+@class N4File;
+
 @interface DetailViewController : UIViewController <UIPopoverControllerDelegate, UISplitViewControllerDelegate> {
     
     UIPopoverController *popoverController;
@@ -17,6 +19,8 @@
     UILabel *detailDescriptionLabel;
 	
 	IBOutlet UIImageView *backgroundImageVIew;
+	
+	NSMutableDictionary *fileViews;
 }
 
 @property (nonatomic, retain) IBOutlet UIToolbar *toolbar;
@@ -25,5 +29,9 @@
 @property (nonatomic, retain) IBOutlet UILabel *detailDescriptionLabel;
 @property (nonatomic, retain) IBOutlet UIImageView *backgroundImageVIew;
 
+@property (nonatomic, retain) NSMutableDictionary *fileViews;
+
+- (void) addFile:(N4File *)file;
+- (void) removeFile:(N4File *)file;
 
 @end

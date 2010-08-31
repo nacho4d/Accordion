@@ -22,7 +22,7 @@
 	NSDate *modificationDate;
 	
 	BOOL expanded;
-	NSInteger level; //used for indentation
+	NSInteger level; //used for cell indentation
 
 }
 

@@ -71,39 +71,18 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-	self.tableView.rowHeight = 56;
-    //self.clearsSelectionOnViewWillAppear = NO;
+	self.tableView.rowHeight = 44;
     self.contentSizeForViewInPopover = CGSizeMake(320.0, 600.0);
 	
 	[self createTestData];
 	
 	sortDescriptors = [N4FileAccordionDatasourceManager defaultSortDescriptors];
-	datasourceManager = [[N4FileAccordionDatasourceManager alloc] initWithRootPath:[self applicationDocumentsDirectory]];
-	datasourceManager.sortDescriptors = sortDescriptors;
+	datasourceManager = [[N4FileAccordionDatasourceManager alloc] initWithRootPath:[self applicationDocumentsDirectory]
+																   sortDescriptors:sortDescriptors];
 	datasourceManager.delegate = self;
 	
+	
 }
-/*
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-}
-*/
-
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-	NSLog(@"%@", NSStringFromCGRect(self.view.frame));
-}
-
-/*
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-}
-*/
-/*
-- (void)viewDidDisappear:(BOOL)animated {
-    [super viewDidDisappear:animated];
-}
-*/
 
 // Ensure that the view controller supports rotation and that the split view can therefore show in both portrait and landscape.
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
@@ -148,7 +127,6 @@
 		cell.indentationWidth = 30.0;
     }
     
-	// Configure the cell.
 	N4File *file = [datasourceManager.mergedRootBranch objectAtIndex:indexPath.row];
 	cell.cellType = (file.isDirectory)? N4TableViewCellTypeDirectory : N4TableViewCellTypeFile;
 	cell.directoryAccessoryImageView.image = (file.isDirectory)? [UIImage imageNamed:@"TriangleSmall.png"] : nil;
@@ -167,11 +145,14 @@
 	else return NO;
 }
 
-// Override to support editing the table view.
+
 - (void)tableView:(UITableView *)aTableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
+		
+		N4File * file = [datasourceManager.mergedRootBranch objectAtIndex:indexPath.row];
+		[detailViewController removeFile:file];
+		
 		[datasourceManager deleteFileAtIndex:indexPath.row];
         [aTableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:YES];
 		
@@ -222,16 +203,20 @@
 			[datasourceManager expandBranchAtIndex:indexPath.row];
 			file.expanded = YES;
 		}
-				
+		
+		//[self.tableView reloadData]; //do not update datasource or tableview here		
+		//rows will be inserted/deleted using datasourceManager delegate methods
+		
 	}
-
-	
-	detailViewController.detailItem = [NSString stringWithFormat:@"%@", file.name];
-	detailViewController.backgroundImageVIew.image = [file imageBig];
-	
-	
-	//[self.tableView reloadData]; //rows will be inserted/deleted using datasourceManager delegate methods
+	else{
+		detailViewController.detailItem = [NSString stringWithFormat:@"%@", file.name];
+		detailViewController.backgroundImageVIew.image = [file imageBig];
+		[detailViewController addFile:file];
+		
+		
+	}
 }
+
 - (NSInteger)tableView:(UITableView *)tableView indentationLevelForRowAtIndexPath:(NSIndexPath *)indexPath{
 	N4File *file = [datasourceManager.mergedRootBranch objectAtIndex:indexPath.row];
 	return file.level; 
@@ -290,8 +275,8 @@
 }
 
 - (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController{
-	//[self _sortDataSource]; //unneccessary since is done by FileSorterViewControllerDelegate
-	//[self.tableView reloadData]; 
+
+	//do not do [self.tableview reloadData] here. it is done by FileSorterViewControllerDelegate
 	[sorterPopoverController release];
 	sorterPopoverController = nil;
 }
@@ -300,12 +285,8 @@
 
 - (void) fileSorterViewController:(N4FileSorterViewController *)filerSorterViewController 
 			  didUpdateDataSource:(NSMutableArray*)datasource{
-	//[self _sortDataSource];
-	NSLog(@"count before rearranging: %i", [datasourceManager.mergedRootBranch count]);
 	[datasourceManager sort];
-	NSLog(@"count before rearranging: %i", [datasourceManager.mergedRootBranch count]);
 	[self.tableView reloadRowsAtIndexPaths:[self.tableView indexPathsForVisibleRows] withRowAnimation:UITableViewRowAnimationFade];
-	[self.tableView performSelector:@selector(reloadData) withObject:nil afterDelay:0.4];
 	
 }
 

@@ -31,7 +31,7 @@
 @property (nonatomic, assign) id<N4FileAccordionDatasourceManagerDelegate> delegate;
 
 + (NSMutableArray *) defaultSortDescriptors;
-- (id) initWithRootPath:(NSString *)path;
+- (id) initWithRootPath:(NSString *)path sortDescriptors:(NSMutableArray *)sortDescs;
 - (void) sort;
 
 - (void) expandBranchAtIndex:(NSInteger)index;
