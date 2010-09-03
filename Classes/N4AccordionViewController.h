@@ -12,6 +12,7 @@
 
 @class DetailViewController;
 @class N4FileAccordionDatasourceManager;
+@class N4PromptAlertView;
 
 @interface N4AccordionViewController : UIViewController <N4FileAccordionDatasourceManagerDelegate, UITableViewDelegate, UITableViewDataSource, UIPopoverControllerDelegate, N4FilerSorterViewControllerDelegate>{
 	IBOutlet UINavigationBar *navigationBar;
@@ -21,6 +22,11 @@
 	N4FileAccordionDatasourceManager *datasourceManager;
 	NSMutableArray *sortDescriptors;
 	UIPopoverController *sorterPopoverController;
+	UIPopoverController *fileCreatorPopoverController;
+	
+	UIAlertView *createFileAlert;
+	UIAlertView *createDirectoryAlert;
+	UIAlertView *duplicateFileAlert;
 }
 
 @property (nonatomic, retain) UINavigationBar *navigationBar;

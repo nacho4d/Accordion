@@ -36,11 +36,12 @@
 }
 
 - (void) layoutSubviews{
+	//NSLog(@"%s", _cmd);
 	[super layoutSubviews];
-	
+	float editIndentation = self.editing ? 30 : 0;
 	float height = self.frame.size.height;
 	float indentation = self.indentationWidth*self.indentationLevel;
-	[directoryAccessoryImageView setFrame:CGRectMake(indentation, 0, height, height)];
+	[directoryAccessoryImageView setFrame:CGRectMake(indentation + editIndentation, 0, height, height)];
 	[self.imageView setFrame:CGRectMake(indentation + height, 0, height, height)];
 	
 	[self.textLabel setFrame:CGRectMake(indentation + 2*height + 5 , height*0.1 , 

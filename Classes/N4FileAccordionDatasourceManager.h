@@ -8,15 +8,19 @@
 
 #import <UIKit/UIKit.h>
 
+@class N4File;
 @class N4FileAccordionDatasourceManager;
 @protocol N4FileAccordionDatasourceManagerDelegate <NSObject>
 @required
-- (void) fileTreeDatasourceManager:(N4FileAccordionDatasourceManager *) manager didInsertRowsAtIndexPaths:(NSArray *)indexPaths;
-- (void) fileTreeDatasourceManager:(N4FileAccordionDatasourceManager *) manager didRemoveRowsAtIndexPaths:(NSArray *)indexPaths;
+- (void) fileAccordionDatasourceManager:(N4FileAccordionDatasourceManager *) manager didInsertRowsAtIndexPaths:(NSArray *)indexPaths;
+- (void) fileAccordionDatasourceManager:(N4FileAccordionDatasourceManager *) manager didRemoveRowsAtIndexPaths:(NSArray *)indexPaths;
+- (void) fileAccordionDatasourceManager:(N4FileAccordionDatasourceManager *) manager didCreateSuccessfullyFile:(N4File *)file;
+- (void) fileAccordionDatasourceManager:(N4FileAccordionDatasourceManager *) manager didFailOnCreationofFile:(N4File *) file error:(NSError *)error;
+
 
 @end
 
-@class N4File;
+
 @interface N4FileAccordionDatasourceManager : NSObject {
 	
 	NSMutableArray *_sortDescriptors;
@@ -40,6 +44,8 @@
 - (void) moveFileFromIndex:(NSInteger)fromIndex toIndex:(NSInteger)toIndex;
 
 - (void) deleteFileAtIndex:(NSInteger)index;
+
+- (void) createDirectoryAtIndex:(NSInteger)index withName:(NSString *)fileName;
 - (void) createFileAtIndex:(NSInteger)index withName:(NSString *)fileName;
 - (void) duplicateFileAtIndex:(NSInteger)index withName:(NSString *)fileName;
 

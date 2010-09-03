@@ -30,6 +30,7 @@
 		9A7EC308122AAB2400BB44E7 /* N4FileSorterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A7EC307122AAB2400BB44E7 /* N4FileSorterViewController.m */; };
 		9A7EC31D122AAEB000BB44E7 /* N4AccordionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A7EC31C122AAEB000BB44E7 /* N4AccordionViewController.xib */; };
 		9AB4304612289FD100507B0E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AB4304512289FD100507B0E /* QuartzCore.framework */; };
+		9AB7B01E122F387100688EA3 /* N4PromptAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB7B01D122F387100688EA3 /* N4PromptAlertView.m */; };
 		9AE4B6751226CF9B0057C449 /* N4FileAccordionDatasourceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE4B6731226CF9B0057C449 /* N4FileAccordionDatasourceManager.m */; };
 		9AE4B68B1226D01B0057C449 /* N4File.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE4B6891226D01B0057C449 /* N4File.m */; };
 /* End PBXBuildFile section */
@@ -67,6 +68,8 @@
 		9A7EC307122AAB2400BB44E7 /* N4FileSorterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = N4FileSorterViewController.m; sourceTree = "<group>"; };
 		9A7EC31C122AAEB000BB44E7 /* N4AccordionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = N4AccordionViewController.xib; sourceTree = "<group>"; };
 		9AB4304512289FD100507B0E /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = /System/Library/Frameworks/QuartzCore.framework; sourceTree = "<absolute>"; };
+		9AB7B01C122F387100688EA3 /* N4PromptAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = N4PromptAlertView.h; sourceTree = "<group>"; };
+		9AB7B01D122F387100688EA3 /* N4PromptAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = N4PromptAlertView.m; sourceTree = "<group>"; };
 		9AE4B6721226CF9B0057C449 /* N4FileAccordionDatasourceManager.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; path = N4FileAccordionDatasourceManager.h; sourceTree = "<group>"; };
 		9AE4B6731226CF9B0057C449 /* N4FileAccordionDatasourceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = N4FileAccordionDatasourceManager.m; sourceTree = "<group>"; };
 		9AE4B6881226D01B0057C449 /* N4File.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; path = N4File.h; sourceTree = "<group>"; };
@@ -107,6 +110,8 @@
 				1D3623250D0F684500981E51 /* AppDelegate.m */,
 				28042009108E984D000629CD /* DetailViewController.h */,
 				2804200A108E984D000629CD /* DetailViewController.m */,
+				9AB7B01C122F387100688EA3 /* N4PromptAlertView.h */,
+				9AB7B01D122F387100688EA3 /* N4PromptAlertView.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -260,6 +265,7 @@
 				9A019C581228AD5100F152EB /* N4AccordionViewCell.m in Sources */,
 				9A7EC308122AAB2400BB44E7 /* N4FileSorterViewController.m in Sources */,
 				9A6AB994122CB1A70080EA40 /* N4FileView.m in Sources */,
+				9AB7B01E122F387100688EA3 /* N4PromptAlertView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

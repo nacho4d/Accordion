@@ -12,6 +12,7 @@
 
 #import "N4File.h"
 #import "N4AccordionViewCell.h"
+#import "N4PromptAlertView.h"
 
 
 @implementation N4AccordionViewController
@@ -67,7 +68,7 @@
 
 
 #pragma mark -
-#pragma mark View lifecycle
+#pragma mark UIViewController methods
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -82,24 +83,67 @@
 	datasourceManager.delegate = self;
 	
 	
+	UINavigationItem *item = [[UINavigationItem alloc] initWithTitle:@"Accordion"];
+	navigationBar.items = [NSArray arrayWithObject:item];
+	[item release]; 
+
+	UIBarButtonItem *leftBarButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit 
+																				   target:self 
+																				   action:@selector(changeToEditMode:)];      
+	navigationBar.topItem.leftBarButtonItem = leftBarButton;
+	[leftBarButton release];
+	
+	UIBarButtonItem *rightBarButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd 
+																					target:self 
+																					action:@selector(showCreateNewFileMenu:)];       
+	navigationBar.topItem.rightBarButtonItem = rightBarButton;
+	[rightBarButton release];
 }
 
 // Ensure that the view controller supports rotation and that the split view can therefore show in both portrait and landscape.
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    return YES;
+    return UIInterfaceOrientationIsLandscape(interfaceOrientation);
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+}
+
+- (void)viewDidUnload {
+    // self.myOutlet = nil;
+}
+
+
+- (void)dealloc {
+    [detailViewController release];
+	[datasourceManager release];
+	[sortDescriptors release];
+    [super dealloc];
 }
 
 #pragma mark - 
 #pragma mark N4FileAccordionDatasourceManagerDelegate methods
 
-- (void) fileTreeDatasourceManager:(N4FileAccordionDatasourceManager *) manager didInsertRowsAtIndexPaths:(NSArray *)indexPaths{
+- (void) fileAccordionDatasourceManager:(N4FileAccordionDatasourceManager *) manager didInsertRowsAtIndexPaths:(NSArray *)indexPaths{
 	[self.tableView insertRowsAtIndexPaths:indexPaths 
 						  withRowAnimation: UITableViewRowAnimationLeft];
+	if ([indexPaths count] == 1) { //ok here? 
+		[self.tableView selectRowAtIndexPath:[indexPaths objectAtIndex:0] 
+									animated:YES scrollPosition:UITableViewScrollPositionNone];
+	}
 }
-- (void) fileTreeDatasourceManager:(N4FileAccordionDatasourceManager *) manager didRemoveRowsAtIndexPaths:(NSArray *)indexPaths{
+- (void) fileAccordionDatasourceManager:(N4FileAccordionDatasourceManager *) manager didRemoveRowsAtIndexPaths:(NSArray *)indexPaths{
 	[self.tableView deleteRowsAtIndexPaths:indexPaths 
 						  withRowAnimation:UITableViewRowAnimationLeft];
 }
+
+- (void) fileAccordionDatasourceManager:(N4FileAccordionDatasourceManager *) manager didCreateSuccessfullyFile:(N4File *) file{
+	
+}
+- (void) fileAccordionDatasourceManager:(N4FileAccordionDatasourceManager *) manager didFailOnCreationofFile:(N4File *)file error:(NSError *)error{
+	
+}
+
 
 
 
@@ -138,13 +182,13 @@
 }
 
 
-
+/*
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
 	N4File * file = [datasourceManager.mergedRootBranch objectAtIndex:indexPath.row];
 	if (!file.isDirectory || file.isEmptyDirectory) return YES;
 	else return NO;
 }
-
+*/
 
 - (void)tableView:(UITableView *)aTableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     
@@ -223,27 +267,43 @@
 }
 
 
-#pragma mark -
-#pragma mark Memory management
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-}
-
-- (void)viewDidUnload {
-    // self.myOutlet = nil;
-}
 
 
-- (void)dealloc {
-    [detailViewController release];
-	[datasourceManager release];
-	[sortDescriptors release];
-    [super dealloc];
-}
 
 #pragma mark -
-#pragma mark UIPopoverController
+#pragma mark UIPopoverControllerDelegate methods
+
+- (BOOL)popoverControllerShouldDismissPopover:(UIPopoverController *)popoverController{
+	return YES;
+}
+
+- (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController{
+
+	
+	if (popoverController == sorterPopoverController) {
+		//do not do [self.tableview reloadData] here. it is done by FileSorterViewControllerDelegate
+		[sorterPopoverController release];
+		sorterPopoverController = nil;
+	}
+	else if (popoverController == fileCreatorPopoverController) {
+		[fileCreatorPopoverController release];
+		fileCreatorPopoverController = nil;
+	}
+
+}
+#pragma mark -
+#pragma mark N4FileSorterViewControllerDelegate
+
+- (void) fileSorterViewController:(N4FileSorterViewController *)filerSorterViewController 
+			  didUpdateDataSource:(NSMutableArray*)datasource{
+	[datasourceManager sort];
+	[self.tableView reloadRowsAtIndexPaths:[self.tableView indexPathsForVisibleRows] withRowAnimation:UITableViewRowAnimationFade];
+	
+}
+
+
+#pragma mark -
+#pragma mark Button actions
 
 - (IBAction) showSortingMenu:(id)sender{
 	if (!sorterPopoverController.popoverVisible) {
@@ -266,30 +326,184 @@
 	}
 	
 }
-
-#pragma mark -
-#pragma mark UIPopoverControllerDelegate methods
-
-- (BOOL)popoverControllerShouldDismissPopover:(UIPopoverController *)popoverController{
-	return YES;
-}
-
-- (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController{
-
-	//do not do [self.tableview reloadData] here. it is done by FileSorterViewControllerDelegate
-	[sorterPopoverController release];
-	sorterPopoverController = nil;
-}
-#pragma mark -
-#pragma mark N4FileSorterViewControllerDelegate
-
-- (void) fileSorterViewController:(N4FileSorterViewController *)filerSorterViewController 
-			  didUpdateDataSource:(NSMutableArray*)datasource{
-	[datasourceManager sort];
-	[self.tableView reloadRowsAtIndexPaths:[self.tableView indexPathsForVisibleRows] withRowAnimation:UITableViewRowAnimationFade];
+- (void) changeToEditMode:(id)sender{
+	UIBarButtonItem *leftBarButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone 
+																				   target:self 
+																				   action:@selector(changeToNormalMode:)];      
+	navigationBar.topItem.leftBarButtonItem = leftBarButton;
+	[leftBarButton release];
+	[self.tableView setEditing:YES animated:YES];
 	
+}
+- (void) changeToNormalMode:(id)sender{
+	UIBarButtonItem *leftBarButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit 
+																				   target:self 
+																				   action:@selector(changeToEditMode:)];      
+	navigationBar.topItem.leftBarButtonItem = leftBarButton;
+	[leftBarButton release];
+	[self.tableView setEditing:NO animated:YES];
+	
+}
+- (void) showCreateNewFileMenu:(id)sender{
+	
+	if (!fileCreatorPopoverController.popoverVisible) {
+		
+		//[self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
+		
+		int w = 240, h = 44;
+		UIView *container = [[UIView alloc] initWithFrame:CGRectMake(0, 0, w, h*4)];
+		UIButton *button1 = [[UIButton alloc] initWithFrame:CGRectMake(0, 44, w, h)];
+		[button1 addTarget:self action:@selector(createDirectoryAlert) forControlEvents:UIControlEventTouchUpInside];
+		[button1 setTitle:@"New Directory ... " forState:UIControlStateNormal];
+		[container addSubview:button1];
+		[button1 release];
+		
+		UIButton *button2 = [[UIButton alloc] initWithFrame:CGRectMake(0, 88, w, h)];
+		[button2 addTarget:self action:@selector(createFileAlert) forControlEvents:UIControlEventTouchUpInside];
+		[button2 setTitle:@"New File ... " forState:UIControlStateNormal];
+		[container addSubview:button2];
+		[button2 release];
+		
+		UIButton *button3 = [[UIButton alloc] initWithFrame:CGRectMake(0, 132, w, h)];
+		[button3 addTarget:self action:@selector(duplicateFileAlert) forControlEvents:UIControlEventTouchUpInside];
+		[button3 setTitle:@"Duplicate File ... " forState:UIControlStateNormal];
+		[container addSubview:button3];
+		NSIndexPath *selectedIndexPath = [self.tableView indexPathForSelectedRow];
+		if (!selectedIndexPath ||
+			((N4File *)[datasourceManager.mergedRootBranch objectAtIndex:selectedIndexPath.row]).isDirectory) [button3 setEnabled:NO];
+		[button3 release];
+		
+		UIViewController *vc = [[UIViewController alloc] init];
+		vc.view = container;
+		[container release];
+		
+		fileCreatorPopoverController = [[UIPopoverController alloc] initWithContentViewController:vc];
+		[vc release];
+		
+		
+		[fileCreatorPopoverController setPopoverContentSize:CGSizeMake(w, h*4)];
+		[fileCreatorPopoverController presentPopoverFromBarButtonItem:sender 
+										permittedArrowDirections:UIPopoverArrowDirectionAny
+														animated:YES];
+		[fileCreatorPopoverController setDelegate:self];
+	}
+
+}
+
+#pragma mark -
+- (void) createDirectoryAlert {
+	
+	
+	
+	NSIndexPath *selectedIndexPath = [self.tableView indexPathForSelectedRow];
+	NSString *message;
+	if (!selectedIndexPath)
+		message = @"New directory will be created at the top level";
+	else{
+		N4File *file = [datasourceManager.mergedRootBranch objectAtIndex:selectedIndexPath.row];
+		if (file.isDirectory) 
+			message = [NSString stringWithFormat:@"New directory will be created inside of %@", [file name]];
+		else
+			message = [NSString stringWithFormat:@"New directory will be created at same level of %@", [file name]];
+	}
+					   
+	createDirectoryAlert = [[UIAlertView alloc] initWithTitle:@"New directory" 
+												 message:message
+												delegate:self 
+									   cancelButtonTitle:@"Cancel" 
+									   otherButtonTitles:@"OK", nil];
+	[createDirectoryAlert show];
+	[createDirectoryAlert release];
+}
+- (void) createFileAlert{
+	
+
+	NSIndexPath *selectedIndexPath = [self.tableView indexPathForSelectedRow];
+	NSString *message;
+	if (!selectedIndexPath)
+		message = @"New directory will be created at the top level";
+	else{
+		N4File *file = [datasourceManager.mergedRootBranch objectAtIndex:selectedIndexPath.row];
+		if (file.isDirectory) 
+			message = [NSString stringWithFormat:@"New directory will be created inside of %@", [file name]];
+		else
+			message = [NSString stringWithFormat:@"New directory will be created at same level of %@", [file name]];
+	}
+	
+	createFileAlert = [[UIAlertView alloc] initWithTitle:@"New directory" 
+												 message:message
+												delegate:self 
+									   cancelButtonTitle:@"Cancel" 
+									   otherButtonTitles:@"OK", nil];
+	[createFileAlert show];
+	[createFileAlert release];
+}
+- (void) duplicateFileAlert{
+	
+	NSIndexPath *selectedIndexPath = [self.tableView indexPathForSelectedRow];
+	NSString *message;
+	if (!selectedIndexPath)
+		message = @"File will be duplicated at the top level";
+	else{
+		N4File *file = [datasourceManager.mergedRootBranch objectAtIndex:selectedIndexPath.row];
+		if (file.isDirectory) 
+			message = [NSString stringWithFormat:@"File will be duplicated inside of %@", [file name]];
+		else
+			message = [NSString stringWithFormat:@"File will be duplicated at same level of %@", [file name]];
+	}
+	
+	duplicateFileAlert = [[UIAlertView alloc] initWithTitle:@"New directory" 
+												 message:message
+												delegate:self 
+									   cancelButtonTitle:@"Cancel" 
+									   otherButtonTitles:@"OK", nil];
+	[duplicateFileAlert show];
+	[duplicateFileAlert release];
+}
+
+
+- (void) createDirectory{
+	NSIndexPath *selectedIndexPath = [self.tableView indexPathForSelectedRow];
+	NSInteger selectedIndex = (!selectedIndexPath) ? -1 : selectedIndexPath.row;
+	[self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
+	[datasourceManager createDirectoryAtIndex:selectedIndex withName:[NSString stringWithFormat:@"Directory%i", (arc4random()%1000)]];
+	
+}
+- (void) createFile{
+	NSIndexPath *selectedIndexPath = [self.tableView indexPathForSelectedRow];
+	NSInteger selectedIndex = (!selectedIndexPath) ? -1 : selectedIndexPath.row;
+	[self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
+	[datasourceManager createFileAtIndex:selectedIndex withName:[NSString stringWithFormat:@"Directory%i", (arc4random()%1000)]];
+
+}
+- (void) duplicateFile{
+	NSIndexPath *selectedIndexPath = [self.tableView indexPathForSelectedRow];
+	NSInteger selectedIndex = (!selectedIndexPath) ? -1 : selectedIndexPath.row;
+	[self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
+	[datasourceManager duplicateFileAtIndex:selectedIndex withName:[NSString stringWithFormat:@"Duplicate%i", (arc4random()%1000)]];
+
+}
+
+- (void) willPresentAlertView:(UIAlertView *)alertView{
+	[fileCreatorPopoverController dismissPopoverAnimated:YES];
+	[fileCreatorPopoverController release];
+	fileCreatorPopoverController = nil;
+	
+}
+
+- (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)index{
+	if (index != 0) {
+		if (alertView == createFileAlert) [self createFile];
+		else if (alertView == createDirectoryAlert) [self createDirectory];
+		else if (alertView == duplicateFileAlert) [self duplicateFile];
+	}
+}
+- (void)alertView:(UIAlertView *)alertView willDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    //[((UIAlertView *)alertView).textField resignFirstResponder];
+    //[((UIAlertView *)alertView).textField removeFromSuperview];  
+    //[((UIAlertView *)alertView).textField release];  
 }
 
 
 @end
-
