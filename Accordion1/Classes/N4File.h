@@ -3,7 +3,8 @@
 //  MandalaChar
 //
 //  Created by Ignacio Enriquez Gutierrez on 8/9/10.
-//  Copyright 2010 Nacho4D. All rights reserved.
+//  Copyright (c) 2010 Nacho4D.
+//  See the file license.txt for copying permission.
 //
 #import <UIKit/UIKit.h>
 

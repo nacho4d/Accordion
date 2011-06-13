@@ -3,7 +3,8 @@
 //  MandalaChart
 //
 //  Created by Guillermo Ignacio Enriquez Gutierrez on 8/24/10.
-//  Copyright 2010 Nacho4d. All rights reserved.
+//  Copyright (c) 2010 Nacho4D.
+//  See the file license.txt for copying permission.
 //
 
 #import "N4FileSorterViewController.h"
