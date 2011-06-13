@@ -16,16 +16,16 @@ build/*
 !default.perspectivev3
 !default.xcworkspace
 
-Accordion1/Accordion.xcodeproj/*.xcworkspace
+Accordion1/Accordion.xcodeproj/project.xcworkspace
 Accordion1/Accordion.xcodeproj/xcuserdata/
-Accordion1/Accordion.xcodeproj/*.mode1v3
-Accordion1/Accordion.xcodeproj/*.pbxuser
+Accordion1/Accordion.xcodeproj/nacho4d.mode1v3
+Accordion1/Accordion.xcodeproj/nacho4d.pbxuser
 Accordion1/build/*
 
-Accordion2/Accordion2.xcodeproj/*.xcworkspace
+Accordion2/Accordion2.xcodeproj/project.xcworkspace
 Accordion2/Accordion2.xcodeproj/xcuserdata/
-Accordion2/Accordion2.xcodeproj/*.mode1v3
-Accordion2/Accordion2.xcodeproj/*.pbxuser
+Accordion2/Accordion2.xcodeproj/nacho4d.mode1v3
+Accordion2/Accordion2.xcodeproj/nacho4d.pbxuser
 Accordion2/build/*
 
 profile
