@@ -1,0 +1,362 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1D3623260D0F684500981E51 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* AppDelegate.m */; };
+		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
+		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
+		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
+		2804200C108E984D000629CD /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2804200A108E984D000629CD /* DetailViewController.m */; };
+		2804203C108E9BAB000629CD /* DetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2804203B108E9BAB000629CD /* DetailView.xib */; };
+		2892E4100DC94CBA00A64D0F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2892E40F0DC94CBA00A64D0F /* CoreGraphics.framework */; };
+		28AD73600D9D9599002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD735F0D9D9599002E5188 /* MainWindow.xib */; };
+		9A1E342F12E8DB9800ADC14D /* MainWindow-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A1E342E12E8DB9800ADC14D /* MainWindow-iPad.xib */; };
+		9A21C4E012EDC61D00C4DC6D /* selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A21C4DE12EDC61D00C4DC6D /* selected.png */; };
+		9A21C4E112EDC61D00C4DC6D /* unselected.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A21C4DF12EDC61D00C4DC6D /* unselected.png */; };
+		9AA32DFA12E83D28006E278F /* GIAccordionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA32DF812E83D28006E278F /* GIAccordionViewController.m */; };
+		9AA32DFB12E83D28006E278F /* GIAccordionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AA32DF912E83D28006E278F /* GIAccordionViewController.xib */; };
+		9AA32E0012E83D45006E278F /* GITreeNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA32DFD12E83D45006E278F /* GITreeNode.m */; };
+		9AA32E0112E83D45006E278F /* GITree.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA32DFF12E83D45006E278F /* GITree.m */; };
+		9AA32E0512E83E00006E278F /* GIAccordion.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA32E0412E83E00006E278F /* GIAccordion.m */; };
+		9AA32ECF12E8539B006E278F /* GIAccordionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA32ECE12E8539B006E278F /* GIAccordionViewCell.m */; };
+		9AA32ED212E853B3006E278F /* MGGradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA32ED112E853B3006E278F /* MGGradientView.m */; };
+		9AA32EEC12E86C3C006E278F /* file44.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AA32EEA12E86C3C006E278F /* file44.png */; };
+		9AA32EED12E86C3C006E278F /* directory44.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AA32EEB12E86C3C006E278F /* directory44.png */; };
+		9AA32EF712E86D96006E278F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA32EF612E86D96006E278F /* QuartzCore.framework */; };
+		9AA32F4A12E8725F006E278F /* triangleSmall.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AA32F4912E8725F006E278F /* triangleSmall.png */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		1D3623240D0F684500981E51 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		1D3623250D0F684500981E51 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		1D6058910D05DD3D006BFB54 /* Accordion2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Accordion2.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		28042009108E984D000629CD /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		2804200A108E984D000629CD /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		2804203B108E9BAB000629CD /* DetailView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailView.xib; sourceTree = "<group>"; };
+		2892E40F0DC94CBA00A64D0F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		28A0AAE50D9B0CCF005BE974 /* Accordion2_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Accordion2_Prefix.pch; sourceTree = "<group>"; };
+		28AD735F0D9D9599002E5188 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
+		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		8D1107310486CEB800E47090 /* Accordion2-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Accordion2-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		9A1E342E12E8DB9800ADC14D /* MainWindow-iPad.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "MainWindow-iPad.xib"; path = "iPad/MainWindow-iPad.xib"; sourceTree = "<group>"; };
+		9A21C4DE12EDC61D00C4DC6D /* selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = selected.png; sourceTree = "<group>"; };
+		9A21C4DF12EDC61D00C4DC6D /* unselected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = unselected.png; sourceTree = "<group>"; };
+		9AA32DF712E83D28006E278F /* GIAccordionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GIAccordionViewController.h; sourceTree = "<group>"; };
+		9AA32DF812E83D28006E278F /* GIAccordionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GIAccordionViewController.m; sourceTree = "<group>"; };
+		9AA32DF912E83D28006E278F /* GIAccordionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GIAccordionViewController.xib; sourceTree = "<group>"; };
+		9AA32DFC12E83D45006E278F /* GITreeNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GITreeNode.h; sourceTree = "<group>"; };
+		9AA32DFD12E83D45006E278F /* GITreeNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GITreeNode.m; sourceTree = "<group>"; };
+		9AA32DFE12E83D45006E278F /* GITree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GITree.h; sourceTree = "<group>"; };
+		9AA32DFF12E83D45006E278F /* GITree.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GITree.m; sourceTree = "<group>"; };
+		9AA32E0312E83E00006E278F /* GIAccordion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GIAccordion.h; sourceTree = "<group>"; };
+		9AA32E0412E83E00006E278F /* GIAccordion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GIAccordion.m; sourceTree = "<group>"; };
+		9AA32ECD12E8539B006E278F /* GIAccordionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GIAccordionViewCell.h; sourceTree = "<group>"; };
+		9AA32ECE12E8539B006E278F /* GIAccordionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GIAccordionViewCell.m; sourceTree = "<group>"; };
+		9AA32ED012E853B3006E278F /* MGGradientView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGGradientView.h; sourceTree = "<group>"; };
+		9AA32ED112E853B3006E278F /* MGGradientView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGGradientView.m; sourceTree = "<group>"; };
+		9AA32EEA12E86C3C006E278F /* file44.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = file44.png; sourceTree = "<group>"; };
+		9AA32EEB12E86C3C006E278F /* directory44.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = directory44.png; sourceTree = "<group>"; };
+		9AA32EF612E86D96006E278F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		9AA32F4912E8725F006E278F /* triangleSmall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = triangleSmall.png; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1D60588F0D05DD3D006BFB54 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
+				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
+				2892E4100DC94CBA00A64D0F /* CoreGraphics.framework in Frameworks */,
+				9AA32EF712E86D96006E278F /* QuartzCore.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		080E96DDFE201D6D7F000001 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				9AA32E0212E83DA5006E278F /* GIAccordion */,
+				1D3623240D0F684500981E51 /* AppDelegate.h */,
+				1D3623250D0F684500981E51 /* AppDelegate.m */,
+				28042009108E984D000629CD /* DetailViewController.h */,
+				2804200A108E984D000629CD /* DetailViewController.m */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		19C28FACFE9D520D11CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1D6058910D05DD3D006BFB54 /* Accordion2.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
+			isa = PBXGroup;
+			children = (
+				9AA32EE712E86C2C006E278F /* Assets */,
+				080E96DDFE201D6D7F000001 /* Classes */,
+				29B97315FDCFA39411CA2CEA /* Other Sources */,
+				29B97317FDCFA39411CA2CEA /* Resources */,
+				9A1E342D12E8DB9500ADC14D /* iPad */,
+				29B97323FDCFA39411CA2CEA /* Frameworks */,
+				19C28FACFE9D520D11CA2CBB /* Products */,
+			);
+			name = CustomTemplate;
+			sourceTree = "<group>";
+		};
+		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				28A0AAE50D9B0CCF005BE974 /* Accordion2_Prefix.pch */,
+				29B97316FDCFA39411CA2CEA /* main.m */,
+			);
+			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+		29B97317FDCFA39411CA2CEA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				28AD735F0D9D9599002E5188 /* MainWindow.xib */,
+				2804203B108E9BAB000629CD /* DetailView.xib */,
+				8D1107310486CEB800E47090 /* Accordion2-Info.plist */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
+				1D30AB110D05D00D00671497 /* Foundation.framework */,
+				2892E40F0DC94CBA00A64D0F /* CoreGraphics.framework */,
+				9AA32EF612E86D96006E278F /* QuartzCore.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9A1E342D12E8DB9500ADC14D /* iPad */ = {
+			isa = PBXGroup;
+			children = (
+				9A1E342E12E8DB9800ADC14D /* MainWindow-iPad.xib */,
+			);
+			name = iPad;
+			sourceTree = "<group>";
+		};
+		9AA32E0212E83DA5006E278F /* GIAccordion */ = {
+			isa = PBXGroup;
+			children = (
+				9AA32ED012E853B3006E278F /* MGGradientView.h */,
+				9AA32ED112E853B3006E278F /* MGGradientView.m */,
+				9AA32ECD12E8539B006E278F /* GIAccordionViewCell.h */,
+				9AA32ECE12E8539B006E278F /* GIAccordionViewCell.m */,
+				9AA32DFC12E83D45006E278F /* GITreeNode.h */,
+				9AA32DFD12E83D45006E278F /* GITreeNode.m */,
+				9AA32DFE12E83D45006E278F /* GITree.h */,
+				9AA32DFF12E83D45006E278F /* GITree.m */,
+				9AA32E0312E83E00006E278F /* GIAccordion.h */,
+				9AA32E0412E83E00006E278F /* GIAccordion.m */,
+				9AA32DF712E83D28006E278F /* GIAccordionViewController.h */,
+				9AA32DF812E83D28006E278F /* GIAccordionViewController.m */,
+				9AA32DF912E83D28006E278F /* GIAccordionViewController.xib */,
+			);
+			name = GIAccordion;
+			sourceTree = "<group>";
+		};
+		9AA32EE712E86C2C006E278F /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				9A21C4DE12EDC61D00C4DC6D /* selected.png */,
+				9A21C4DF12EDC61D00C4DC6D /* unselected.png */,
+				9AA32EEA12E86C3C006E278F /* file44.png */,
+				9AA32EEB12E86C3C006E278F /* directory44.png */,
+				9AA32F4912E8725F006E278F /* triangleSmall.png */,
+			);
+			name = Assets;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1D6058900D05DD3D006BFB54 /* Accordion2 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "Accordion2" */;
+			buildPhases = (
+				1D60588D0D05DD3D006BFB54 /* Resources */,
+				1D60588E0D05DD3D006BFB54 /* Sources */,
+				1D60588F0D05DD3D006BFB54 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Accordion2;
+			productName = Accordion2;
+			productReference = 1D6058910D05DD3D006BFB54 /* Accordion2.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		29B97313FDCFA39411CA2CEA /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Accordion2" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 1;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+				en,
+			);
+			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1D6058900D05DD3D006BFB54 /* Accordion2 */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1D60588D0D05DD3D006BFB54 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				28AD73600D9D9599002E5188 /* MainWindow.xib in Resources */,
+				2804203C108E9BAB000629CD /* DetailView.xib in Resources */,
+				9AA32DFB12E83D28006E278F /* GIAccordionViewController.xib in Resources */,
+				9AA32EEC12E86C3C006E278F /* file44.png in Resources */,
+				9AA32EED12E86C3C006E278F /* directory44.png in Resources */,
+				9AA32F4A12E8725F006E278F /* triangleSmall.png in Resources */,
+				9A1E342F12E8DB9800ADC14D /* MainWindow-iPad.xib in Resources */,
+				9A21C4E012EDC61D00C4DC6D /* selected.png in Resources */,
+				9A21C4E112EDC61D00C4DC6D /* unselected.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1D60588E0D05DD3D006BFB54 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
+				1D3623260D0F684500981E51 /* AppDelegate.m in Sources */,
+				2804200C108E984D000629CD /* DetailViewController.m in Sources */,
+				9AA32DFA12E83D28006E278F /* GIAccordionViewController.m in Sources */,
+				9AA32E0012E83D45006E278F /* GITreeNode.m in Sources */,
+				9AA32E0112E83D45006E278F /* GITree.m in Sources */,
+				9AA32E0512E83E00006E278F /* GIAccordion.m in Sources */,
+				9AA32ECF12E8539B006E278F /* GIAccordionViewCell.m in Sources */,
+				9AA32ED212E853B3006E278F /* MGGradientView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		1D6058940D05DD3E006BFB54 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = Accordion2_Prefix.pch;
+				INFOPLIST_FILE = "Accordion2-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
+				PRODUCT_NAME = Accordion2;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Debug;
+		};
+		1D6058950D05DD3E006BFB54 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = Accordion2_Prefix.pch;
+				INFOPLIST_FILE = "Accordion2-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
+				PRODUCT_NAME = Accordion2;
+				TARGETED_DEVICE_FAMILY = 2;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C01FCF4F08A954540054247B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_UNIVERSAL_IPHONE_OS)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
+				OTHER_CFLAGS = "";
+				PREBINDING = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Debug;
+		};
+		C01FCF5008A954540054247B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_UNIVERSAL_IPHONE_OS)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PREBINDING = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "Accordion2" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1D6058940D05DD3E006BFB54 /* Debug */,
+				1D6058950D05DD3E006BFB54 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Accordion2" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C01FCF4F08A954540054247B /* Debug */,
+				C01FCF5008A954540054247B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 29B97313FDCFA39411CA2CEA /* Project object */;
+}
