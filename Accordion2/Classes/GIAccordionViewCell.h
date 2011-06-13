@@ -4,6 +4,7 @@
 //
 //  Created by Ignacio Enriquez Gutierrez on 8/28/10.
 //  Copyright 2010 Nacho4D. All rights reserved.
+//  See the file license.txt for copying permission.
 //
 
 #import <Foundation/Foundation.h>
