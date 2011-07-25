@@ -88,7 +88,7 @@
 
 
 - (void)cellWasLongPressed:(id)sender{
-	NSLog(@"%s: Not implemented");
+	NSLog(@"%@: Not implemented", NSStringFromSelector(_cmd));
 }
 
 

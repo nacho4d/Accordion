@@ -56,8 +56,8 @@
 		self.backgroundView = [[[MGGradientView alloc] init] autorelease];
 		
 		//for Debug
-		dirAccessoryLayer.borderColor = [UIColor blackColor].CGColor;
-		dirAccessoryLayer.borderWidth = 0.5;
+		//dirAccessoryLayer.borderColor = [UIColor blackColor].CGColor;
+		//dirAccessoryLayer.borderWidth = 0.5;
 		//self.imageView.layer.borderColor = [UIColor redColor].CGColor;
 		//self.textLabel.layer.borderColor = [UIColor blueColor].CGColor;
 		//self.detailTextLabel.layer.borderColor = [UIColor greenColor].CGColor;

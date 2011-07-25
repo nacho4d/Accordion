@@ -86,8 +86,12 @@
 	[super viewDidLoad];
 	self.contentSizeForViewInPopover = CGSizeMake(320.0, 600.0);
 	
+	//for simulator/Debug
+	NSString *path = @"/";
 	
-	NSString *path = @"/Users/nacho4d/Desktop/Dir";
+	//for the device
+	//NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+	
 	if (!accordion) {
 		accordion = [[GIAccordion alloc] initWithPath:path]; //this should be done in _initialize
 	}
