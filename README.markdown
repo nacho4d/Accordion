@@ -12,9 +12,11 @@ Is the very first implementation, left for historical purposes :)
 
 Is the version I am working on, is much better but still lacking of some features, I hope I can have full version by the end of June or beggining of July 2011.
 
+![Accordion in the simulator][1]
+
 Any comments are welcomed 
 
 @nacho4d
 nacho4d@mac.com
 
-
+ [1]:http://web.me.com/nacho4d/iPhoneAppIcons/Accordion/AccordionCM.png
