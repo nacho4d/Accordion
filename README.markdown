@@ -12,6 +12,8 @@ Is the very first implementation, left for historical purposes :)
 
 Is the version I am working on, is much better but still lacking of some features, I hope I can have full version by the end of June or beggining of July 2011.
 
+**Screenshot:**
+Accordion in the iPad simulator
 ![Accordion in the simulator][1]
 
 Any comments are welcomed 
