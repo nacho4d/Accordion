@@ -24,7 +24,6 @@
 		9AA32E0112E83D45006E278F /* GITree.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA32DFF12E83D45006E278F /* GITree.m */; };
 		9AA32E0512E83E00006E278F /* GIAccordion.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA32E0412E83E00006E278F /* GIAccordion.m */; };
 		9AA32ECF12E8539B006E278F /* GIAccordionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA32ECE12E8539B006E278F /* GIAccordionViewCell.m */; };
-		9AA32ED212E853B3006E278F /* MGGradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA32ED112E853B3006E278F /* MGGradientView.m */; };
 		9AA32EEC12E86C3C006E278F /* file44.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AA32EEA12E86C3C006E278F /* file44.png */; };
 		9AA32EED12E86C3C006E278F /* directory44.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AA32EEB12E86C3C006E278F /* directory44.png */; };
 		9AA32EF712E86D96006E278F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA32EF612E86D96006E278F /* QuartzCore.framework */; };
@@ -59,8 +58,6 @@
 		9AA32E0412E83E00006E278F /* GIAccordion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GIAccordion.m; sourceTree = "<group>"; };
 		9AA32ECD12E8539B006E278F /* GIAccordionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GIAccordionViewCell.h; sourceTree = "<group>"; };
 		9AA32ECE12E8539B006E278F /* GIAccordionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GIAccordionViewCell.m; sourceTree = "<group>"; };
-		9AA32ED012E853B3006E278F /* MGGradientView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGGradientView.h; sourceTree = "<group>"; };
-		9AA32ED112E853B3006E278F /* MGGradientView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGGradientView.m; sourceTree = "<group>"; };
 		9AA32EEA12E86C3C006E278F /* file44.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = file44.png; sourceTree = "<group>"; };
 		9AA32EEB12E86C3C006E278F /* directory44.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = directory44.png; sourceTree = "<group>"; };
 		9AA32EF612E86D96006E278F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -157,8 +154,6 @@
 		9AA32E0212E83DA5006E278F /* GIAccordion */ = {
 			isa = PBXGroup;
 			children = (
-				9AA32ED012E853B3006E278F /* MGGradientView.h */,
-				9AA32ED112E853B3006E278F /* MGGradientView.m */,
 				9AA32ECD12E8539B006E278F /* GIAccordionViewCell.h */,
 				9AA32ECE12E8539B006E278F /* GIAccordionViewCell.m */,
 				9AA32DFC12E83D45006E278F /* GITreeNode.h */,
@@ -212,7 +207,7 @@
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0410;
+				LastUpgradeCheck = 0420;
 			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Accordion2" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -266,7 +261,6 @@
 				9AA32E0112E83D45006E278F /* GITree.m in Sources */,
 				9AA32E0512E83E00006E278F /* GIAccordion.m in Sources */,
 				9AA32ECF12E8539B006E278F /* GIAccordionViewCell.m in Sources */,
-				9AA32ED212E853B3006E278F /* MGGradientView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

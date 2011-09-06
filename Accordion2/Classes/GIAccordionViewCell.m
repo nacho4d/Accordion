@@ -9,7 +9,6 @@
 
 #import <QuartzCore/QuartzCore.h>
 #import "GIAccordionViewCell.h"
-#import "MGGradientView.h"
 
 @interface GIAccordionViewCell ()
 {
@@ -52,8 +51,6 @@
 		self.textLabel.backgroundColor = [UIColor clearColor];
 		self.detailTextLabel.textColor= [UIColor grayColor];
 		self.detailTextLabel.backgroundColor = [UIColor clearColor];
-		
-		self.backgroundView = [[[MGGradientView alloc] init] autorelease];
 		
 		//for Debug
 		//dirAccessoryLayer.borderColor = [UIColor blackColor].CGColor;
