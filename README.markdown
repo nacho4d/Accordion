@@ -6,16 +6,17 @@ Accordion aims to be a persistent layer between your TableView and your files on
 
 Accordion is under MIT Licence so if you find it helpfull just use it :D
 
-**Accordion1:**
+###**Accordion1:**
 
 Is the very first implementation, left for historical purposes :)
 
-**Accordion2:**
+###**Accordion2:**
 
 Is the version I am working on, is much better but still lacking of some features, I hope I can have full version by the end of June or beggining of July 2011.
 
-**Screenshot:**
+###**Screenshot:**
 Accordion in the iPad simulator
+
 ![Accordion in the simulator][1]
 
 Any comments are welcomed 
