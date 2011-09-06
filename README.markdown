@@ -4,7 +4,7 @@ Accordion is a small project for iOS that implements file navigation using accor
 Accordion aims to be a persistent layer between your TableView and your files on the storage and hopefully become an alternative to tipical drill-down navigation (like UINavigationController) for files.
 
 
-Accordion is under MIT Licence so if you find it helpfull just use it :D
+Accordion is under MIT Licence so if you find it helpful  just use it :D
 
 ###**Accordion1:**
 
