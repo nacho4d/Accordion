@@ -19,7 +19,6 @@
 		9A21C4E012EDC61D00C4DC6D /* selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A21C4DE12EDC61D00C4DC6D /* selected.png */; };
 		9A21C4E112EDC61D00C4DC6D /* unselected.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A21C4DF12EDC61D00C4DC6D /* unselected.png */; };
 		9AA32DFA12E83D28006E278F /* GIAccordionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA32DF812E83D28006E278F /* GIAccordionViewController.m */; };
-		9AA32DFB12E83D28006E278F /* GIAccordionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AA32DF912E83D28006E278F /* GIAccordionViewController.xib */; };
 		9AA32E0012E83D45006E278F /* GITreeNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA32DFD12E83D45006E278F /* GITreeNode.m */; };
 		9AA32E0112E83D45006E278F /* GITree.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA32DFF12E83D45006E278F /* GITree.m */; };
 		9AA32E0512E83E00006E278F /* GIAccordion.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AA32E0412E83E00006E278F /* GIAccordion.m */; };
@@ -49,7 +48,6 @@
 		9A21C4DF12EDC61D00C4DC6D /* unselected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = unselected.png; sourceTree = "<group>"; };
 		9AA32DF712E83D28006E278F /* GIAccordionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GIAccordionViewController.h; sourceTree = "<group>"; };
 		9AA32DF812E83D28006E278F /* GIAccordionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GIAccordionViewController.m; sourceTree = "<group>"; };
-		9AA32DF912E83D28006E278F /* GIAccordionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GIAccordionViewController.xib; sourceTree = "<group>"; };
 		9AA32DFC12E83D45006E278F /* GITreeNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GITreeNode.h; sourceTree = "<group>"; };
 		9AA32DFD12E83D45006E278F /* GITreeNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GITreeNode.m; sourceTree = "<group>"; };
 		9AA32DFE12E83D45006E278F /* GITree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GITree.h; sourceTree = "<group>"; };
@@ -164,7 +162,6 @@
 				9AA32E0412E83E00006E278F /* GIAccordion.m */,
 				9AA32DF712E83D28006E278F /* GIAccordionViewController.h */,
 				9AA32DF812E83D28006E278F /* GIAccordionViewController.m */,
-				9AA32DF912E83D28006E278F /* GIAccordionViewController.xib */,
 			);
 			name = GIAccordion;
 			sourceTree = "<group>";
@@ -236,7 +233,6 @@
 			files = (
 				28AD73600D9D9599002E5188 /* MainWindow.xib in Resources */,
 				2804203C108E9BAB000629CD /* DetailView.xib in Resources */,
-				9AA32DFB12E83D28006E278F /* GIAccordionViewController.xib in Resources */,
 				9AA32EEC12E86C3C006E278F /* file44.png in Resources */,
 				9AA32EED12E86C3C006E278F /* directory44.png in Resources */,
 				9AA32F4A12E8725F006E278F /* triangleSmall.png in Resources */,

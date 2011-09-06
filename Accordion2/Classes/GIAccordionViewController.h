@@ -12,15 +12,10 @@
 
 @class GIAccordion;
 
-@interface GIAccordionViewController : UIViewController {
-	IBOutlet UITableView *tableView;
-	IBOutlet UIToolbar *toolbarTop;
-	IBOutlet UIToolbar *toolbarBottom;
+@interface GIAccordionViewController : UITableViewController {
 	GIAccordion *accordion;
-	
 }
 
-- (IBAction)changeEditMode:(id)sender;
 - (IBAction)sort:(id)sender;
 
 @end
